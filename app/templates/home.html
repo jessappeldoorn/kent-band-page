@@ -1,17 +1,22 @@
-<div class='hero-content'> <!-- Hero content -->
+<div class='hero-content' > <!-- Hero content -->
  <div class='container'>
    <h1>upcoming shows</h1>
+   <ul class="schedule" ng-repeat="show in shows">
+    <li> {{ formattedShows(show) }} </li>  
+   </ul>
 
-<!--       <div class="row">
-        <div class="col-lg-4">
-          <h4 class="list-group-item">upcoming shows</h4>
-       
-          <div class="list-group-item" ng-repeat="show in shows" ng-hide="task.expired">
-             <div class="todo"> {{ newShowText }} </div>
-    
-          </div>
-        </div>
-      </div> -->  
+   <div class="scroll">
+     <div class="container">
+       <div class="row">
+         <div class="col-md-4 col-md-offset-4">      
+           <a class="glyphicon mine glyphicon-menu-down" href="#about"></a>
+         </div>
+       </div>
+     </div>
+   </div> 
 
  </div>
 </div>
+   
+
+

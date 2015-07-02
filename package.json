@@ -1,12 +1,12 @@
 {
-  "name": "base-frontend-project",
+  "name": "kent-appeldoorn",
   "version": "0.0.1",
-  "description": "Bloc skeleton project for a single page application",
+  "description": "Band page for Kent Appeldoorn",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "author": "Bloc and Nick Ferraro",
+  "author": "Jessica Appeldoorn",
   "license": "ISC",
   "dependencies": {
     "hapi": "^7.5.0",

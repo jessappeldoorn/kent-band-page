@@ -1,39 +1,43 @@
-<div class='page-heading'>
-  <h1>song lists</h1>
-</div>
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <h3>Songs of the 50's</h3>
-      <ul class="song-list">
-        <li>ALL I HAVE TO DO IS DREAM</li>
-        <li>AT THE HOP</li>
-      </ul>
-
-    </div>
-    <div class="col-md-3">
-        <h3>Songs of the 60's</h3>
-      <ul class="song-list">
-        <li>ALL I HAVE TO DO IS DREAM</li>
-        <li>AT THE HOP</li>
-      </ul>
-
-    </div>
-    <div class="col-md-3">
-        <h3>Songs of the 70's</h3>
-      <ul class="song-list">
-        <li>ALL I HAVE TO DO IS DREAM</li>
-        <li>AT THE HOP</li>
-      </ul>
-
-    </div>
-        <div class="col-md-3">
-        <h3>Songs of the 70's</h3>
-      <ul class="song-list">
-        <li>ALL I HAVE TO DO IS DREAM</li>
-        <li>AT THE HOP</li>
-      </ul>
-
+    <div class="col-md-4">
+      <div class='page-heading'>
+        <h1>SONG LISTS</h1>
+      </div>
     </div>
   </div>
+</div>
+
+
+<!-- <div class="panel panel-default">
+<div class="panel-heading">OLDIES</div>
+  <song-list formatted-songs-function="formattedSongs(song)" song-object="song"> </song-list>
+</div> -->
+
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4">
+      <h3> Songs of the 50's & 60's</h3>
+      <ul class="song-list" ng-repeat="song in oldiesSongs">
+        <li> {{ formattedSongs(song) }} </li> 
+      </ul>
+    </div>
+    <div class="col-md-4">
+        <h3>Songs of the Classic 70's</h3>
+      <ul class="song-list"ng-repeat="song in classicSongs">
+        <li>{{ formattedSongs(song) }}</li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+        <h3>Songs of the 80's/90's & Current</h3>
+        <ul class="song-list"ng-repeat="song in currentSongs">
+          <li>{{ formattedSongs(song) }}</li>
+        </ul>
+    </div>
+  </div>
+</div>
+
+</br>
 </div>

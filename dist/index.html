@@ -13,21 +13,21 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
-    <div class="my-navbar">
-      <nav class="navbar navbar-default navbar-fixed-top">
+    <div id="navigation" class="my-navbar" ng-class="">
+      <nav class="navbar transparent navbar-inverse navbar-fixed-top">
         <div class="my-container">
           <div class="container-fluid">
             <div class="my-header">
               <div class="navbar-header">
                 <a class="navbar-brand" ui-sref="home">kent</a>
-                <h5 class="specialties">singer / guitarist</h5>
+                <p class="specialties">singer / guitarist</p>
               </div>
             </div>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#about">ABOUT</a></li>
+              <li><a ui-sref="about">ABOUT</a></li>
               <li><a href="#contact">CONTACT</a></li>
-              <li><a ui-sref='songs'>MUSIC</a></li>
-              <li><a ui-sref='photos'>PHOTOS</a></li>
+              <li><a ui-sref="songs">MUSIC</a></li>
+              <li><a ui-sref="photos">PHOTOS</a></li>
             </ul>
           </div><!-- /.container-fluid -->
         </div>
@@ -35,83 +35,6 @@
     </div>
 
     <div ui-view></div>
-    </br>
-
-    <!--   <div class="header">
-        <a ui-sref='home'><h1>KENT</h1></a>
-        <h5>singer / guitarist / entertainer </strong></h5>
-        <nav class="nav-links">
-        <a class="links"ui-sref='history' ng-class=>ABOUT</a>
-        <a class="links" ui-sref='home'>SHOWS</a>
-        <a class="links" ui-sref='profile'>MUSIC</a>
-        <a class="links" ui-sref='profile'>PHOTOS</a>
-        </nav>
-      
-      </div>
-
-      <div class='navbar-container'>
-        <nav class="nav-navbar">
-          <div class="container-fluid">
-                 <ul>
-                  <li class="links"><a ui-sref='history' ng-class=>ABOUT</a></li>
-                  <li class="links"><a ui-sref='home'>SHOWS</a></li>
-                  <li class="links"><a ui-sref='profile'>MUSIC</a></li>
-                  <li class="links"><a ui-sref='profile'>PHOTOS</a></li>
-                </ul> -->
-    <!--       </div>
-        </nav>
-      </div>  -->
-
- <!--      <div class='hero-content'> 
-       <div class='container'>
-         <h1>upcoming shows</h1> -->
-    <!-- 
-            <div class="row">
-              <div class="col-lg-4">
-                <h4 class="list-group-item">upcoming shows</h4>
-             
-                <div class="list-group-item" ng-repeat="show in shows" ng-hide="task.expired">
-                   <div class="todo"> {{ newShowText }} </div>
-          
-        </div>
-              </div>
-            </div> -->  
-
-    <!--    </div>
-      </div> -->
-      <div id="about">
-
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <p>About Kent</p></br> 
-            </div>
-          </div>
-        </div>
-
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8">
-              <p>Hitz, formed in 1981 touring around the country, opening and sometimes backing 50's and 60's national recording artists such as Paul Revere & the Raiders, The Coasters, Gary Puckett and the Union Gap, Jan & Dean and about two dozen others, too numerous to mention.  They also did a comedy and tribute show of their own but always maintained the formula of playing the "greatest hits of all time".</p></br> 
-            </div>
-            <div class="col-md-4">
-              <h3>"Hogan" is a solo act, one man band, performed by Kent "Hogan" Appeldoorn will full band sound, amazing what technology can do!</h3>
-            </div>
-          </div>
-        </div>
-
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4">            
-              <h2>Leader & co-founder of Hitz</h2>
-              <h1>Lead vocals-Guitar-Synth Guitar-Keyboards-Bass-Programming</h1></br>
-            </div>
-            <div class="col-md-8">
-              <p>Kent has called Minnesota home for most of his life, but has traveled extensively in his career as a founder and leader of several well known regional and national touring acts such as Kaleidoscope, Gangbusters and then forming Hitz in 1981.  Many of his band mates formed popular offshoot groups and his experiences aof playing wiht, or opening for, a huge list of who's who rock and roll artists has taken him all over the country and several cruises. Kent's excellent guitar playing and clear soaring voice singing favorites like Roy Orvison, Frankie Valli and th eBee Gees have impressed crowds for decades.  His ipressions of famous artist, seriuos ad comedic, show that he is a real entertainer.</p> 
-            </div>
-          </div>
-        </div>
-    </div>
 
     <div id="contact">
 
@@ -131,7 +54,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-           <p>BOOKING</p>
+           <h3>BOOKING</h3>
           <p>kentappeldoorn@gmail.com</p>
           </div> <!-- col-md-4 -->
         </div> <!-- row -->
