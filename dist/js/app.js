@@ -11,25 +11,25 @@ var app = angular.module("bandPage", ["firebase", "ui.router", "bootstrapLightbo
    });
 
     $stateProvider.state('photos', {
-     url: '/',
+     url: '/photos',
      controller: 'Photo.controller',
      templateUrl: '/templates/photos.html'
    });
 
     $stateProvider.state('songs', {
-     url: '/',
+     url: '/songs',
      controller: 'Main.controller',
      templateUrl: '/templates/songs.html'
    });
 
     $stateProvider.state('about', {
-     url: '/',
+     url: '/about',
      controller: 'Main.controller',
      templateUrl: '/templates/about.html'
    });
 
     $stateProvider.state('login', {
-     url: '/',
+     url: '/login',
      controller: 'Login.controller',
      templateUrl: '/templates/login.html'
    });
@@ -114,9 +114,9 @@ $scope.classicSongs = [
  {artist: "Jason Mraz", songs: ["I'm Yours"]},
  ];
 
- songCollections.push($scope.oldiesSongs);
+ // songCollections.push($scope.oldiesSongs);
 
- $scope.songs.$add(songCollections);
+ // $scope.songs.$add(songCollections);
 
 $scope.formattedSongs = function(song) {
   return song.artist + ":" + "\n"  + song.songs;
@@ -129,36 +129,8 @@ $scope.formattedSongs = function(song) {
 $scope.formattedShows = function(show) {
   return show.date + ":" + show.venue;
 }
-  $scope.songs.$add(songCollections);
+  // $scope.songs.$add(songCollections);
   
-  // $scope.addSbow = function() { 
-  //   var newShow = {
-  //     text: $scope.newShowText,
-  //     expired: false,
-  //     created: fireTime,
-  //   };
-
-  //   $scope.shows.$add(newShow); // Push into array
-  // };
- 
-  // $scope.deleteShow = function(show){
-  //   $scope.shows.$remove(show);
-  // };
-
-  // $scope.expiredShow = function() {
-  //   $scope.shows.forEach(function(show){
-  //     var createdAt = show.created,
-  //     currentTime = new Date().getTime(),
-  //     expiredTime = 604800000;
-
-  //     if( currentTime - createdAt > expiredTime ){
-  //       console.log("Expire this show " + show);
-  //       show.expired = true;
-  //       $scope.shows.$save(show);
-  //     }
-  //   });
-  // }
-
   // $interval( function(){ $scope.expiredShow(); }, 86400000);
 
  
@@ -173,30 +145,126 @@ app.controller('Photo.controller', ['$scope', '$firebaseArray', 'Lightbox', func
 
   $scope.images = [
       {
-        'small': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-prn2/v/t1.0-9/181992_10150098787407022_755055_n.jpg?oh=3bd368e89cd19fa536b2cd2ea53250e7&oe=5632D212",
-        'url': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-prn2/v/t1.0-9/181992_10150098787407022_755055_n.jpg?oh=3bd368e89cd19fa536b2cd2ea53250e7&oe=5632D212",
+        'small': "/images/kent_1.jpg",
+        'url': "/images/kent_1.jpg",
         'desc': "photo",
         'caption': "Gangbusters"
       },
       {
-        'small': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/40737_781042372875_4073748_n.jpg?oh=03dbcebffc8011a0d5aa55a37c0ba87c&oe=55E654C2",
-        'url': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/40737_781042372875_4073748_n.jpg?oh=03dbcebffc8011a0d5aa55a37c0ba87c&oe=55E654C2",
-        'desc': "photo",
-        'caption': "Gangbusters"
-      },
-            {
-        'small': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/181504_10150098788337022_1470633_n.jpg?oh=288d1b1b66f3d935fe085711ebfcf04a&oe=5628027E",
-        'url': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/181504_10150098788337022_1470633_n.jpg?oh=288d1b1b66f3d935fe085711ebfcf04a&oe=5628027E",
+        'small': "/images/kent_2.jpg",
+        'url': "/images/kent_2.jpg",
         'desc': "photo",
         'caption': "Gangbusters"
       },
       {
-        'small': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/180920_10150098787767022_59392_n.jpg?oh=074cfe11228d41f08f3417dcb2903d40&oe=5623BF7A",
-        'url': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/40737_781042372875_4073748_n.jpg?oh=03dbcebffc8011a0d5aa55a37c0ba87c&oe=55E654C2",
+        'small': "images/kent_3.jpg",
+        'url': "images/kent_3.jpg",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+      {
+        'small': "images/kent_elvis.jpg",
+        'url': "images/kent_elvis.jpg",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+      {
+        'small': "/images/kent_1.jpg",
+        'url': "/images/kent_1.jpg",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+      {
+        'small': "/images/kent_2.jpg",
+        'url': "/images/kent_2.jpg",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+      {
+        'small': "images/kent_3.jpg",
+        'url': "images/kent_3.jpg",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+      {
+        'small': "images/kent_elvis.jpg",
+        'url': "images/kent_elvis.jpg",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+      {
+        'small': "images/kent_3.jpg",
+        'url': "images/kent_3.jpg",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+      {
+        'small': "images/kent_elvis.jpg",
+        'url': "images/kent_elvis.jpg",
         'desc': "photo",
         'caption': "Gangbusters"
       },
 
+      {
+        'small': "/images/kent_1.jpg",
+        'url': "/images/kent_1.jpg",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+      {
+        'small': "/images/kent_2.jpg",
+        'url': "/images/kent_2.jpg",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+      {
+        'small': "images/kent_3.jpg",
+        'url': "images/kent_3.jpg",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+      {
+        'small': "images/kent_elvis.jpg",
+        'url': "images/kent_elvis.jpg",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+      {
+        'small': "/images/kent_1.jpg",
+        'url': "/images/kent_1.jpg",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+      {
+        'small': "/images/kent_2.jpg",
+        'url': "/images/kent_2.jpg",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+      {
+        'small': "images/kent_3.jpg",
+        'url': "images/kent_3.jpg",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+      {
+        'small': "images/kent_elvis.jpg",
+        'url': "images/kent_elvis.jpg",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+      {
+        'small': "images/kent_3.jpg",
+        'url': "images/kent_3.jpg",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+      {
+        'small': "images/kent_elvis.jpg",
+        'url': "images/kent_elvis.jpg",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
     ];
 
   $scope.openLightboxModal = function (index) {
@@ -207,7 +275,7 @@ app.controller('Photo.controller', ['$scope', '$firebaseArray', 'Lightbox', func
 
 // login controller
 app.controller('Login.controller', ['$scope', '$firebaseArray', '$interval', '$timeout', function($scope, $firebaseArray, $interval, $timeout){
-  var ref = new Firebase("kents-page.firebaseIO.com");
+  var ref = new Firebase("kents-page.firebaseIO.com/Shows");
   var ref2 = new Firebase("kents-page.firebaseIO.com");
 
 // create a synchronized (psuedo read-only) array
@@ -216,7 +284,7 @@ app.controller('Login.controller', ['$scope', '$firebaseArray', '$interval', '$t
   $scope.addSong = function() { // add song to list
     var newSong = {
       artist: $scope.newArtistText,
-      songs: [$scope.newSongText]
+      songs: $scope.newSongText
     };
 
     $scope.songs.$add(newSong); // Push into array
@@ -228,18 +296,10 @@ app.controller('Login.controller', ['$scope', '$firebaseArray', '$interval', '$t
     $scope.songs.$remove(song);
   };
 
-
 // create a synchronized (psuedo read-only) array
   $scope.shows = $firebaseArray(ref);
   var fireTime = Firebase.ServerValue.TIMESTAMP;
 
-  
-  // $scope.addShow = function() { // add show to list
-  //   var newShow = {
-  //     text: $scope.newShowText,
-  //     expired: false,
-  //     created: fireTime,
-  //   };
   $scope.addShow = function() { // add show to list
     var newShow = {
       date: $scope.newShowDate,

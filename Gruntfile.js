@@ -63,7 +63,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     src: [ './images/*.{png,jpg,jpeg}' ],
-                    dest: './dist/images',
+                    dest: './dist',
                     cwd: './app'
                 }, {
                     expand: true,
