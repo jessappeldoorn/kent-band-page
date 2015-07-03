@@ -10,7 +10,8 @@ module.exports = function(grunt) {
         browserify: {
             dist: {
                 files: {
-                    './dist/js/app.js': ['./app/scripts/app.js']
+                    './dist/js/app.js': ['./app/scripts/app.js'], 
+                    './dist/js/angular-bootstrap-lightbox.js': ['./app/scripts/angular-bootstrap-lightbox.js']
                 }
             }
         },

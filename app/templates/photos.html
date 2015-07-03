@@ -1,4 +1,4 @@
-<!-- <div class="container">
+<div class="container">
   <div class="row">
     <div class="col-md-4"><img class="img-thumbnail" src="https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xap1/v/t1.0-9/40737_781042372875_4073748_n.jpg?oh=03dbcebffc8011a0d5aa55a37c0ba87c&oe=55E654C2"/></div>
     <div class="col-md-4"><img class="img-thumbnail" src="https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/v/t1.0-9/44253_781042288045_5064076_n.jpg?oh=20455883ff9f898c90c8f1815d2512d7&oe=5619D963"/></div>
@@ -11,14 +11,12 @@
     <div class="col-md-4"><img class="img-thumbnail" src="https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xpf1/v/t1.0-9/44176_781042802015_412716_n.jpg?oh=2cacc78317f5223af45b0b25dbb7e598&oe=55E8611B"/></div>
     <div class="col-md-4"><img class="img-thumbnail" src="https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-prn2/v/t1.0-9/64416_781041998625_5079016_n.jpg?oh=0cde6f8b4946d3272c6335afd87ed4cb&oe=561E8426"/></div>
   </div>
-</div> -->
-
-<div class="container">
-   <ul class='row'>
-       <li class="col-md-6"><img src="https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/v/t1.0-9/224114_5012550974_5424_n.jpg?oh=bdf8155863d9abb5fd28a4b610a4b1b5&oe=561844E1"></li>
-       <li class="col-md-6"><img src="https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfa1/v/t1.0-9/24161_404222672436_2312669_n.jpg?oh=a63348158f706eff959f56f6781bfe29&oe=5618AB06"></li>
-       <li class="col-md-6"> <img src="https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-prn2/v/t1.0-9/64416_781041998625_5079016_n.jpg?oh=0cde6f8b4946d3272c6335afd87ed4cb&oe=561E8426"></li>
-       <li class="col-md-6"><img src="https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-prn2/v/t1.0-9/64416_781041998625_5079016_n.jpg?oh=0cde6f8b4946d3272c6335afd87ed4cb&oe=561E8426"></li>
-       <li class="col-md-6"><img src="https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-prn2/v/t1.0-9/64416_781041998625_5079016_n.jpg?oh=0cde6f8b4946d3272c6335afd87ed4cb&oe=561E8426"></li>
-   </ul>
 </div>
+
+<ul>
+  <li ng-repeat="image in images">
+    <a ng-click="openLightboxModal($index)">
+      <img ng-src="{{image.small}}" class="img-thumbnail">
+    </a>
+  </li>
+</ul>

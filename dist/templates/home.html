@@ -1,9 +1,20 @@
 <div class='hero-content' > <!-- Hero content -->
  <div class='container'>
-   <h1>upcoming shows</h1>
-   <ul class="schedule" ng-repeat="show in shows">
-    <li> {{ formattedShows(show) }} </li>  
-   </ul>
+     <h1>upcoming shows</h1>
+     <div class="schedule">
+   <div class="row">
+    <div class="col-md-4">
+
+     <ul class="list-group" ng-repeat="show in shows">
+       <li class="list-group-item">{{ show.date}}:<span class="venue"> {{ show.venue}}</span><span class="showtime"> {{ show.time}} </span></li>
+     </ul>
+    </div>
+   </div> 
+  </div>
+  </div>
+<!--    <ul class="schedule" ng-repeat="show in shows">
+    <li> {{ show.date}}<span class="venue"> {{ show.venue}}</span><span class="showtime"> {{ show.time}} </span></li>  
+   </ul> -->
 
    <div class="scroll">
      <div class="container">
@@ -15,7 +26,8 @@
      </div>
    </div> 
 
- </div>
+
+
 </div>
    
 

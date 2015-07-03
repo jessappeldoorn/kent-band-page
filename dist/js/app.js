@@ -1,18 +1,18 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var app = angular.module("bandPage", ["firebase", "ui.router"]);
+var app = angular.module("bandPage", ["firebase", "ui.router", "bootstrapLightbox"]);
 
  app.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
    $locationProvider.html5Mode(true);
  
    $stateProvider.state('home', {
      url: '/',
-     controller: 'Main.controller',
+     controller: 'Login.controller',
      templateUrl: '/templates/home.html'
    });
 
     $stateProvider.state('photos', {
      url: '/',
-     controller: 'Main.controller',
+     controller: 'Photo.controller',
      templateUrl: '/templates/photos.html'
    });
 
@@ -28,10 +28,16 @@ var app = angular.module("bandPage", ["firebase", "ui.router"]);
      templateUrl: '/templates/about.html'
    });
 
+    $stateProvider.state('login', {
+     url: '/',
+     controller: 'Login.controller',
+     templateUrl: '/templates/login.html'
+   });
+
  }]);
 
 // home controller
-app.controller('Main.controller', ['$scope', '$firebaseArray','$timeout', function($scope, $firebaseArray, $interval, $timeout){
+app.controller('Main.controller', ['$scope', '$firebaseArray','$timeout', 'Lightbox', function($scope, $firebaseArray, $interval, $timeout, Lightbox){
   var ref = new Firebase("kents-page.firebaseIO.com");
 
 // create a synchronized (psuedo read-only) array
@@ -181,6 +187,118 @@ $scope.formattedShows = function(show) {
 
 }]);
 
+app.controller('Photo.controller', ['$scope', '$firebaseArray', 'Lightbox', function($scope, $firebaseArray, Lightbox){
+  var ref = new Firebase("kents-page.firebaseIO.com");
+
+  $scope.gallery = [
+      {
+        'small': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/180920_10150098787767022_59392_n.jpg?oh=074cfe11228d41f08f3417dcb2903d40&oe=5623BF7A",
+        'url': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/180920_10150098787767022_59392_n.jpg?oh=074cfe11228d41f08f3417dcb2903d40&oe=5623BF7A",
+        'desc': "photo",
+        'caption': ""
+      },
+      {
+        'small': "images/T_bdcadmin.png",
+        'url': "images/L_bdcadmin.png",
+        'desc': "Administrative Reporting",
+        'caption': "This high-fidelity mockup of the Administrative Reporting page went through several iterations before getting the go-ahead. I worked with project managers to make sure our clients and stakeholders were satisfied. I also coded out the front-end of the final page."
+      },
+      {
+        'small': "images/T_ces.png",
+        'url': "images/L_ces.png",
+        'desc': "Czar Energy Solutions",
+        'caption': "Czar Energy Solutions needed a new, simpler design that they could update on their own through. I talked to the staff about how they wanted the site to look and feel, and made the website responsive so customers could comfortably view the site on multiple devices."
+      },
+      {
+        'small': "images/T_coupontracking.png",
+        'url': "images/L_coupontracking.png",
+        'desc': "Coupon Tracking Report",
+        'caption': "This low-fidelity mockup for the Coupon Tracking Report was done in Balsamiq. We wanted to make it easy for car dealership employees to understand the impact and success of the coupons they offered their customers."
+      },
+    ];
+
+  $scope.openLightboxModal = function (index) {
+    Lightbox.openModal($scope.images, index);
+  };
+
+}]);
+
+// login controller
+app.controller('Login.controller', ['$scope', '$firebaseArray', '$interval', '$timeout', function($scope, $firebaseArray, $interval, $timeout){
+  var ref = new Firebase("kents-page.firebaseIO.com");
+  var ref2 = new Firebase("kents-page.firebaseIO.com");
+
+// create a synchronized (psuedo read-only) array
+  $scope.songs = $firebaseArray(ref2);
+
+  $scope.addSong = function() { // add song to list
+    var newSong = {
+      artist: $scope.newArtistText,
+      songs: [$scope.newSongText]
+    };
+
+    $scope.songs.$add(newSong); // Push into array
+    $scope.newSongText = "";
+    $scope.newArtistText = ""
+  };
+ 
+  $scope.deleteSong = function(song){
+    $scope.songs.$remove(song);
+  };
+
+
+// create a synchronized (psuedo read-only) array
+  $scope.shows = $firebaseArray(ref);
+  var fireTime = Firebase.ServerValue.TIMESTAMP;
+
+  
+  // $scope.addShow = function() { // add show to list
+  //   var newShow = {
+  //     text: $scope.newShowText,
+  //     expired: false,
+  //     created: fireTime,
+  //   };
+  $scope.addShow = function() { // add show to list
+    var newShow = {
+      date: $scope.newShowDate,
+      time: $scope.newShowTime,
+      venue: $scope.newShowVenue,
+      expired: false,
+      created: fireTime,
+    };
+
+    $scope.shows.$add(newShow); // Push into array
+    $scope.newShowDate = "";
+    $scope.newShowTime = "";
+    $scope.newShowVenue = "";
+  };
+ 
+  $scope.deleteShow = function(show){
+    $scope.shows.$remove(show);
+  };
+
+  $scope.expiredShow = function() {
+    console.log("Called expiredShow!");
+    $scope.shows.forEach(function(show){
+      var createdAt = show.created,
+      currentTime = new Date().getTime(),
+      expiredTime = 604800000;
+
+      if( currentTime - createdAt > expiredTime ){
+        console.log("Expire this show " + show);
+        show.expired = true;
+        $scope.shows.$save(show);
+      }
+      else {
+      console.log("Did not expire " + show);  
+      }
+    });
+  }
+
+  $interval( function(){ $scope.expiredShow(); }, 86400000);
+
+}]);
+
 app.directive("songList", function() {
   return {
       restrict: 'AE',
@@ -191,8 +309,6 @@ app.directive("songList", function() {
         formattedSongsFunction: '&'
       }
   }
-
-
 });
 
 
