@@ -41,28 +41,8 @@ app.controller('Main.controller', ['$scope', '$firebaseArray','$timeout', 'Light
 
 // create a synchronized (psuedo read-only) array
   $scope.songs = $firebaseArray(ref);
-  var fireTime = Firebase.ServerValue.TIMESTAMP;
-
-  // function Song(artist, song)
-  // function Song(artist, song) {
-  //   this.artist = artist;
-  //   this.song = song;
-  //   this.listSongs = function() {
-  //     for 
-  //     this.artist + this.song[i]
-  //   }
-  // }
-
-var songCollections = []
- // sixtiesSongs = [];
-
- // var elvis = {
- //  artist: "Elvis Presley",
- //  songs: ['Suspicious Minds', "Can't Help Falling in Love"]
- // }
-
- 
- // sixtiesSongs.push(elvis)
+  var fireTime = Firebase.ServerValue.TIMESTAMP,
+  songCollections = [];
 
  $scope.oldiesSongs = [
  {artist: "ELVIS PRESLEY", songs: ["Suspicious Minds", "Can't Help Falling in Love", "Good Luck Charm", "Stuck On You", "The Wonder of You", "Hound Dog", "All Shook Up", "Don't Be Cruel", "Teddy Bear", "Jail House Rock"]},
@@ -133,16 +113,17 @@ $scope.classicSongs = [
  {artist: "Jason Mraz", songs: ["I'm Yours"]},
  ];
 
+ songCollections.push($scope.oldiesSongs);
+
+ $scope.songs.$add(songCollections);
+
 $scope.formattedSongs = function(song) {
   return song.artist + ":" + "\n"  + song.songs;
 };
 
 // songCollections.push(sixtiesSongs);
 
-$scope.shows = [
- {date: "August 1", venue: "Maplewood, MN"},
- {date: "August 15", venue: "Duluth, MN"},
- ];
+
 
 $scope.formattedShows = function(show) {
   return show.date + ":" + show.venue;
@@ -189,31 +170,32 @@ $scope.formattedShows = function(show) {
 app.controller('Photo.controller', ['$scope', '$firebaseArray', 'Lightbox', function($scope, $firebaseArray, Lightbox){
   var ref = new Firebase("kents-page.firebaseIO.com");
 
-  $scope.gallery = [
+  $scope.images = [
+      {
+        'small': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-prn2/v/t1.0-9/181992_10150098787407022_755055_n.jpg?oh=3bd368e89cd19fa536b2cd2ea53250e7&oe=5632D212",
+        'url': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-prn2/v/t1.0-9/181992_10150098787407022_755055_n.jpg?oh=3bd368e89cd19fa536b2cd2ea53250e7&oe=5632D212",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+      {
+        'small': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/40737_781042372875_4073748_n.jpg?oh=03dbcebffc8011a0d5aa55a37c0ba87c&oe=55E654C2",
+        'url': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/40737_781042372875_4073748_n.jpg?oh=03dbcebffc8011a0d5aa55a37c0ba87c&oe=55E654C2",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
+            {
+        'small': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/181504_10150098788337022_1470633_n.jpg?oh=288d1b1b66f3d935fe085711ebfcf04a&oe=5628027E",
+        'url': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/181504_10150098788337022_1470633_n.jpg?oh=288d1b1b66f3d935fe085711ebfcf04a&oe=5628027E",
+        'desc': "photo",
+        'caption': "Gangbusters"
+      },
       {
         'small': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/180920_10150098787767022_59392_n.jpg?oh=074cfe11228d41f08f3417dcb2903d40&oe=5623BF7A",
-        'url': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/180920_10150098787767022_59392_n.jpg?oh=074cfe11228d41f08f3417dcb2903d40&oe=5623BF7A",
+        'url': "https://scontent-sea1-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/40737_781042372875_4073748_n.jpg?oh=03dbcebffc8011a0d5aa55a37c0ba87c&oe=55E654C2",
         'desc': "photo",
-        'caption': ""
+        'caption': "Gangbusters"
       },
-      {
-        'small': "images/T_bdcadmin.png",
-        'url': "images/L_bdcadmin.png",
-        'desc': "Administrative Reporting",
-        'caption': "This high-fidelity mockup of the Administrative Reporting page went through several iterations before getting the go-ahead. I worked with project managers to make sure our clients and stakeholders were satisfied. I also coded out the front-end of the final page."
-      },
-      {
-        'small': "images/T_ces.png",
-        'url': "images/L_ces.png",
-        'desc': "Czar Energy Solutions",
-        'caption': "Czar Energy Solutions needed a new, simpler design that they could update on their own through. I talked to the staff about how they wanted the site to look and feel, and made the website responsive so customers could comfortably view the site on multiple devices."
-      },
-      {
-        'small': "images/T_coupontracking.png",
-        'url': "images/L_coupontracking.png",
-        'desc': "Coupon Tracking Report",
-        'caption': "This low-fidelity mockup for the Coupon Tracking Report was done in Balsamiq. We wanted to make it easy for car dealership employees to understand the impact and success of the coupons they offered their customers."
-      },
+
     ];
 
   $scope.openLightboxModal = function (index) {

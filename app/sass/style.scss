@@ -1,7 +1,8 @@
+// ================ INDEX PAGE ===================
+
 .navbar-default .navbar-brand {
   color: #f8f8f8;
 }
-
 
   .my-header a {
     padding-top: 30px;
@@ -29,6 +30,8 @@
   padding-top: 25px;
   margin-right: 50px;
 }
+
+// ================ HOME PAGE ===================
 
 .hero-content {
   margin-top: 90px;
@@ -59,6 +62,8 @@
 
 }
 
+// ================ ABOUT PAGE ===================
+
 #about {
 
   margin-top: 100px;
@@ -68,7 +73,7 @@
   background-color: #f8f8f8;
 
   .header-image {
-    background-image: url("https://content-na.drive.amazonaws.com/cdproxy/templink/iI969R-O9ybl1Gx8DT5UGhiuvfRHQrk0G5LQUdYU5eALAYspN?viewBox=1444");
+    background-image: url("/images/IMG_8265.jpg");
     background-repeat: no-repeat;
     height: 400px;
     width: 100%;
@@ -121,17 +126,9 @@
 
 }
 
-.space {
-  margin-top: 100px;
-}
 
-.showtime {
-  float: right;
-}
 
-.venue {
-  margin: 0 auto;
-}
+
 
 //  .navbar.transparent.navbar-inverse {
  
@@ -270,6 +267,47 @@
 
 .navbar-fixed-top {
   background-color: #000000;
+}
+
+// ================ PHOTOS PAGE ===================
+
+
+.thumbnails-container{
+  margin-top: 100px;
+  } 
+
+  .thumbnails {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+}
+
+// ================ LOGIN PAGE ===================
+
+.login-details {
+  margin-top: 50px;
+
+  .space {
+    margin-top: 100px;
+  }
+
+    .glyphicon-remove {
+      float: left;
+      margin-right: 20px;
+    }
+
+      .showtime {
+        float: right;
+      }
+
+        .venue {
+          text-align: right;
+        }
+
+          .bottom-space {
+            margin-bottom: 50px;
+          }
 }
 
 

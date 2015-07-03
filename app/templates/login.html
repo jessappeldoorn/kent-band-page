@@ -1,102 +1,59 @@
-<div class='container'>
- <h1 class="space">Edit shows and songs</h1>
- <ul class="schedule" ng-repeat="show in shows">
-  <li> {{ formattedShows(show) }} </li>  
- </ul>
+<div class='login-details'>
 
-<!-- <div class="shows">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
-         Add tasks
-          <form class="input-group" ng-submit="addShow()">
-            <input type="text" ng-model="newShowText" class="form-control" aria-label="Shows" placeholder="Add shows...">
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="submit">submit</button>
-              </div>
-          </form>
-        </div> 
-      </div>
-    </div>  -->
-
-<form class="form-inline" ng-submit="addShow()">
-  <div class="form-group">
-    <label for="exampleInputName2">Date</label>
-    <input type="text" ng-model="newShowDate" class="form-control" id="exampleInputName2" placeholder="Show date...">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail2">Time</label>
-    <input type="text" ng-model="newShowTime" class="form-control" id="exampleInputEmail2" placeholder="Show time...">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail2">Venue</label>
-    <input type="text" ng-model="newShowVenue" class="form-control" id="exampleInputEmail2" placeholder="Show venue...">
-  </div>
-  <button type="submit" class="btn btn-default">Add Show</button>
-</form>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
-          <h4 class="list-group-item">SHOWS LIST</h4>
-          <!-- List of tasks -->
-          <div class="list-group-item" ng-show="newShowText">
-              <input type="text" disabled='true' class="todo" placeholder= "{{ newShowText }}" >
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="space">EDIT SHOWS</h1>
+        <form class="form-inline" ng-submit="addShow()">
+          <div class="form-group">
+            <label for="exampleInputName2">Date</label>
+            <input type="text" ng-model="newShowDate" class="form-control" id="exampleInputName2" placeholder="Show date...">
           </div>
-<!--           <div class="list-group-item" ng-repeat="show in shows" ng-hide="show.expired">
-          <div class="show"> {{ show.venue }} <span class="glyphicon glyphicon-remove" ng-click="deleteShow(show)"></span></div>
-             <div class="todo">Priority: {{ task.priority }} </div>
-             <input class="date" type="text" ng-model="task.created" ng-click="expiredTask(task)"> 
-              <button ng-click="myStyle={color: 'yellow'}"><span class="glyphicon glyphicon-star" ng-hide="task.priority === High" ng-style="myStyle"></span></button>
-          </div> -->
-         <ul class="list-group" ng-repeat="show in shows">
-           <li class="list-group-item">{{ show.date}}:<span class="venue"> {{ show.venue}}</span><span class="showtime"> {{ show.time}} </span><span class="glyphicon glyphicon-remove" ng-click="deleteShow(show)"></span></li>
-         </ul>
-        </div><!-- end of col-lg-6 -->
-      </div> <!-- end of row -->
-    </div> <!-- end of container -->
-    </div>
-
-    </br>
-
-
-<div class="songs">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
-         <!-- Add tasks -->
-          <form class="input-group" ng-submit="addSong()">
-            <input type="text" ng-model="newArtistText" class="form-control" aria-label="Song" placeholder="Add artist...">
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="submit">submit</button>
-              </div>
-            <input type="text" ng-model="newSongText" class="form-control" aria-label="Song" placeholder="Add songs...">
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-              </div>
-          </form>
-        </div> <!-- end of col-lg-6 -->
-      </div> <!-- end of row -->
-    </div> <!-- end of container -->
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
-          <h4 class="list-group-item">SONG LIST</h4>
-          <!-- List of tasks -->
-          <div class="list-group-item" ng-show="newSongText">
-              <input type="text" disabled='true' class="todo" placeholder= "{{ newSongText }}" >
+          <div class="form-group">
+            <label for="exampleInputEmail2">Time</label>
+            <input type="text" ng-model="newShowTime" class="form-control" id="exampleInputEmail2" placeholder="Show time...">
           </div>
-          <div class="list-group-item 2" ng-repeat="song in songs">
-             <div class="show"> {{ song.artist }} <span class="glyphicon glyphicon-remove" ng-click="deleteSong(song)"></span>
+          <div class="form-group">
+            <label for="exampleInputEmail2">Venue</label>
+            <input type="text" ng-model="newShowVenue" class="form-control" id="exampleInputEmail2" placeholder="Show venue...">
           </div>
-           <!--  <div class="todo">Priority: {{ task.priority }} </div>
-             <input class="date" type="text" ng-model="task.created" ng-click="expiredTask(task)"> -->
-             <!-- <button ng-click="myStyle={color: 'yellow'}"><span class="glyphicon glyphicon-star" ng-hide="task.priority === High" ng-style="myStyle"></span></button>-->
+          <button type="submit" class="btn btn-default">Add Show</button>
+        </form>
+
+        </br>
+
+        <h4 class="list-group-item">SHOWS CURRENTLY LISTED</h4>
+        <ul class="list-group">
+          <li class="list-group-item" ng-repeat="show in shows">{{ show.date}}:<span class="venue"> {{ show.venue}} </span><span class="showtime"> {{ show.time}} </span><span class="glyphicon glyphicon-remove" ng-click="deleteShow(show)"></span></li>
+        </ul>
+
+        </br>
+
+        <h1>EDIT SONGS</h1>
+        <form class="form-inline" ng-submit="addSong()">
+          <div class="form-group">
+            <label for="exampleInputName2">Collection</label>
+            <input type="text" ng-model="newShowDate" class="form-control" id="exampleInputName2" placeholder="Song collection...">
           </div>
-        </div><!-- end of col-lg-6 -->
-      </div> <!-- end of row -->
-    </div> <!-- end of container -->
+          <div class="form-group">
+            <label for="exampleInputEmail2">Artist</label>
+            <input type="text" ng-model="newShowTime" class="form-control" id="exampleInputEmail2" placeholder="Song artist...">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail2">Song</label>
+            <input type="text" ng-model="newShowVenue" class="form-control" id="exampleInputEmail2" placeholder="Song name...">
+          </div>
+          <button type="submit" class="btn btn-default">Add Song</button>
+        </form>
+
+        </br>
+<!--         <div class="bottom-space">
+        <h4 class="list-group-item">SONGS CURRENTLY LISTED </h4>
+        <li class="list-group-item" ng-repeat="song in songs"> {{ song.artist }} <span class="glyphicon glyphicon-remove" ng-click="deleteSong(song)"></span></div> -->
+        </li>
+      </div><!-- end of col-lg-6 -->
+    </div> <!-- end of row -->
+  </div> <!-- end of container -->
 </div>
-</div>
+
 

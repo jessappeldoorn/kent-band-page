@@ -47,7 +47,7 @@
   color: #676563;
   background-color: #f8f8f8; }
   #about .header-image {
-    background-image: url("https://content-na.drive.amazonaws.com/cdproxy/templink/iI969R-O9ybl1Gx8DT5UGhiuvfRHQrk0G5LQUdYU5eALAYspN?viewBox=1444");
+    background-image: url("/images/IMG_8265.jpg");
     background-repeat: no-repeat;
     height: 400px;
     width: 100%;
@@ -83,15 +83,6 @@
   #contact h3 {
     margin-top: 80px; }
 
-.space {
-  margin-top: 100px; }
-
-.showtime {
-  float: right; }
-
-.venue {
-  margin: 0 auto; }
-
 .scroll .glyphicon-menu-down {
   bottom: 0;
   margin-top: 550px;
@@ -121,3 +112,26 @@
 
 .navbar-fixed-top {
   background-color: #000000; }
+
+.thumbnails-container {
+  margin-top: 100px; }
+
+.thumbnails {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  margin: 10px; }
+
+.login-details {
+  margin-top: 50px; }
+  .login-details .space {
+    margin-top: 100px; }
+  .login-details .glyphicon-remove {
+    float: left;
+    margin-right: 20px; }
+  .login-details .showtime {
+    float: right; }
+  .login-details .venue {
+    text-align: right; }
+  .login-details .bottom-space {
+    margin-bottom: 50px; }
