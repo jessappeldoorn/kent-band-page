@@ -1,8 +1,9 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <h1>PHOTOS THROUGH THE YEARS</h1>
-      <h3>click on images to expand</h3>
+<div class="photo-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h1>CLICK ON PHOTOS TO EXPAND</h1>
+      </div>
     </div>
   </div>
 </div>
@@ -11,7 +12,7 @@
     <div class="col-md-12">
       <ul>
         <div class="thumbnails-container">
-          <li class="thumbnails" ng-repeat="image in images">
+          <li id="images" class="thumbnails" ng-repeat="image in images">
             <a ng-click="openLightboxModal($index)">
             <img ng-src="{{image.small}}" class="img-thumbnail">
             </a>

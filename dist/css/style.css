@@ -22,16 +22,17 @@
   padding-top: 25px;
   margin-right: 50px; }
 
+.nav-links:active {
+  background-color: #000000; }
+
 .hero-content {
   margin-top: 90px;
-  background-image: url("https://lh3.googleusercontent.com/Td1FcnJvU7h_3jrRJzwSGiMD8M-0tyKvSdezMD_OUIM=w1265-h733-no");
+  background: url("https://lh3.googleusercontent.com/Td1FcnJvU7h_3jrRJzwSGiMD8M-0tyKvSdezMD_OUIM=w1265-h733-no") no-repeat center center fixed;
   width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
-  position: relative;
   background-position: center;
-  background-color: #000000;
-  background-position: cover; }
+  background-color: #000000; }
   .hero-content .schedule {
     float: right; }
   .hero-content h1 {
@@ -56,7 +57,7 @@
   color: #676563;
   background-color: #f8f8f8; }
   #about .header-image {
-    background-image: url("/images/IMG_8265.jpg");
+    background-image: url("/images/touched2_kent.png");
     background-repeat: no-repeat;
     height: 400px;
     width: 100%;
@@ -104,15 +105,6 @@
 .panel-body {
   width: 500px; }
 
-.page-heading {
-  font-family: 'Oswald', sans-serif;
-  padding-top: 100px;
-  text-align: left; }
-
-.img-thumbnail {
-  height: 100%;
-  width: 100%; }
-
 .footer {
   background-color: #000000;
   font-family: 'Open Sans';
@@ -122,14 +114,23 @@
 .navbar-fixed-top {
   background-color: #000000; }
 
-.thumbnails-container {
-  margin-top: 100px; }
+.photo-header {
+  margin-top: 150px; }
+  .photo-header h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 25px; }
 
-.thumbnails {
+#images {
   display: inline-block;
   width: 200px;
   height: 200px;
   margin: 10px; }
+
+.img-thumbnail {
+  background-position: 50% 25%;
+  background-size: cover;
+  height: 100%;
+  width: 100%; }
 
 .login-details {
   margin-top: 50px; }
@@ -144,3 +145,10 @@
     text-align: right; }
   .login-details .bottom-space {
     margin-bottom: 50px; }
+
+.music-widget {
+  margin-top: 99px; }
+
+.page-heading {
+  font-family: 'Oswald', sans-serif;
+  text-align: left; }
