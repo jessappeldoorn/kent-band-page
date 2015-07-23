@@ -1,7 +1,7 @@
-Bloc Base Project
+Kent Appeldoorn - Solo Artist
 =================
 
-A base for Bloc frontend projects.
+A website for a musician.
 
 ## Configuration
 
