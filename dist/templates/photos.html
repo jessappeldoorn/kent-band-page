@@ -1,24 +1,25 @@
-<div class="photo-header">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8">
-        <h1>CLICK ON PHOTOS TO EXPAND</h1>
+<div class="photos">
+  <div class="photo-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h1 class="photo-header">PHOTO GALLERY</h1>
+          <p>CLICK TO EXPAND</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <ul>
-        <div class="thumbnails-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ul>
           <li id="images" class="thumbnails" ng-repeat="image in images">
             <a ng-click="openLightboxModal($index)">
-            <img ng-src="{{image.small}}" class="img-thumbnail">
+            <img ng-src="{{image.small}}" id="img-thumbnail" class="img-responsive" alt="Responsive image">
             </a>
           </li>
-        </div>
-      </ul>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

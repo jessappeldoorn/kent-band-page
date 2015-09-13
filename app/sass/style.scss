@@ -1,7 +1,7 @@
 // ================ INDEX PAGE ===================
 
 .navbar-default .navbar-brand {
-  color: #f8f8f8;
+  color: #fcbe46;
 }
 
   .my-header a {
@@ -14,16 +14,19 @@
     line-height: 1px;
 }
 
+a:hover {
+
+    color: #ffffff;
+}
+
+.container-fluid {
+
+}
+
 .specialties {
       margin-left: 15px;
       font-size: 14px;
       color: #8B8080; 
-}
-
-.my-navbar {
-  // padding-bottom: 40px;
-  // margin-bottom: 55px;
-  background-color: #FFFFFF;
 }
 
 .navbar-right {
@@ -31,20 +34,48 @@
   margin-right: 50px;
 }
 
-.nav-links:active {
+#contact {
+  // height: 300px;
   background-color: #000000;
+
+  .phone {
+    margin-bottom: 140px;
+  }
+
+  h3 {
+    font-family: 'Oswald', sans-serif;
+    margin-top: 80px;
+    color: #fcbe46;
+  }
+    p {
+      color: #9d9d9d;
+      font-family: 'Open Sans';
+    }
+      .list-email {
+        width: 350px;
+      }
+        #email-submit {
+          margin-top: 15px;
+        }
+}
+
+.site-design {
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  color: #000000;
+  font-family: 'Open Sans';
 }
 
 // ================ HOME PAGE ===================
 
 .hero-content {
-  margin-top: 90px;
-  // padding-top: 50px;
+  margin-top: 85px;
   background: url("https://lh3.googleusercontent.com/Td1FcnJvU7h_3jrRJzwSGiMD8M-0tyKvSdezMD_OUIM=w1265-h733-no") no-repeat center center fixed;
   width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
-  // position: relative;
+  position: relative;
   background-position: center;
   background-color: #000000;
   // background-size: cover;
@@ -61,91 +92,86 @@
   // margin-right: 75px;
   margin-top: 150px;
   margin-bottom: 20px;
-  color: #ffffff;
+  color: #fcbe46;
   }
 
   .show-list {
     margin-bottom: 15px;
-    background-color: #000000;
+    // background-color: #000000;
     color: #8B8080;
     border: none;
     font-size: 16px;
   }
+}
 
-  .date-text {
-  
-    width: 100px;
+.past-shows {
+  font-family: 'Open Sans';
+  color: #fcbe46;
+  font-size: 14px;
+}
 
+#past-shows {
+  font-family: 'Oswald', sans-serif;
+  color: #312F2F;
+  font-size: 14px;
+
+  .show-list {
+    font-family: 'Open Sans';
+    font-size: 16px;
+    color: #676563;
   }
 }
+
 
 // ================ ABOUT PAGE ===================
 
 #about {
-
-  margin-top: 100px;
+  margin-top: 105px;
   font-family: 'Open Sans';
   font-size: 18px;
   color: #676563;
   background-color: #f8f8f8;
 
-  .header-image {
-    background-image: url("/images/touched2_kent.png");
-    background-repeat: no-repeat;
-    height: 400px;
-    width: 100%;
-    background-size: cover;
-    margin-bottom: 50px;
+  .about-heading {
+    font-family: 'Oswald', sans-serif;
+    color: #312F2F;
+
   }
 
-    h1 {
-  font-family: 'Open Sans';
-  color: #000000;
-    }
+  h1 {
+    font-family: 'Open Sans';
+    color: #312F2F;
+  }
 
     .col-md-4 {
       margin-top: 200px;
       border-right: solid 8px;
       // border-bottom: solid 8px;
-      color: #000000;
+      color: #312F2F;
     }
 
-    #photo1 {
-      height: 600px;
-      width: 100%;
-      background-image: url("https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xaf1/v/t1.0-9/181038_10150098787867022_102921_n.jpg?oh=87ae93da6493383207c6e6a4c2c688df&oe=5620A3C3");
-      background-size: cover;
-      border: none;
-    }
+    // #photo1 {
+      // height: 600px;
+      // width: 100%;
+      // background-image: url("/images/hitzVintage.jpg");
+      // background-size: cover;
+      // border: none;
+    // }
 
     #second-picture {
       margin-top: 0px;
       margin-left: 30px;
       border: none;
-      height: 400px;
-      width: 250px;
+      height: 500px;
+      width: 500px;
       background-size: cover;
-      background-image: url("https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xaf1/v/t1.0-9/215340_10150158957312022_2051431_n.jpg?oh=d9cdfd12807fcf2018649eeb1d987e65&oe=5618B416")
+      background-image: url("/images/touched2_kent_cropped.png")
     }
 
     #big-text {
-      color: #000000;
+      color: #312F2F;
     }
 }
-
-#contact {
-  height: 300px;
-  background-color: #f8f8f8;
-
-  h3 {
-    margin-top: 80px;
-  }
-
-}
-
-
-
-
 
 //  .navbar.transparent.navbar-inverse {
  
@@ -160,14 +186,15 @@
 
 
 
-  .scroll {
-  // width: 100px;
-  // height: 50px;
-  // border-radius: 50px 50px 0px 0px;
-  // background-color: #ffffff;
-  // position: absolute;
-  // bottom: 0;
-  // left: 45%;
+//   .scroll {
+//   width: 100px;
+//   height: 50px;
+//   border-radius: 50px 50px 0px 0px;
+//   background-color: #ffffff;
+//   position: absolute;
+//   bottom: 0;
+//   left: 45%;
+// }
 
 
   .glyphicon-menu-down {
@@ -181,7 +208,7 @@
 
 
   }
-}
+
 
 .panel-body {
   width: 500px;
@@ -267,13 +294,7 @@
     
 // }
 
-.footer {
-  background-color: #000000;
-  font-family: 'Open Sans';
-  text-align: center;
-  color: #c9a581;
 
-}
 
 .navbar-fixed-top {
   background-color: #000000;
@@ -281,36 +302,41 @@
 
 // ================ PHOTOS PAGE ===================
 
-.photo-header {
-  margin-top: 150px;
+.photos {
+  background-color: #f8f8f8;
 
-  h1 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 25px;
+  .photo-header {
+    margin-top: 65px;
+    background-color: #f8f8f8;
   }
+
+    h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 35px;
+      color: #312F2F;
+    }
+
+      p {
+        color: #fcbe46;
+        font-family: 'Open Sans';
+        font-size: 18px;
+        margin-bottom: 30px;
+      }
+
+        #images {
+          display: inline-block;
+          width: 200px;
+          height: 200px;
+          margin: 10px;
+        }
+
+          #img-thumbnail {
+            background-position: 50% 25%;
+            background-size: cover;
+            height: 100%;
+            width: 100%;  
+          }
 }
-
-// .thumbnails-container{
-//   margin-top: 100px;
-//   display: inline-block;
-//   } 
-
-  #images {
-    display: inline-block;
-    width: 200px;
-    height: 200px;
-    margin: 10px;
-  }
-
-  .img-thumbnail {
-    background-position: 50% 25%;
-    background-size: cover;
-    height: 100%;
-    width: 100%;  
-  }
-
-
-
 
 // ================ LOGIN PAGE ===================
 
@@ -339,15 +365,43 @@
           }
 }
 
-// ================ MUSIC PAGE ===================
 
-.music-widget {
-  margin-top: 99px;
+// ================ MUSIC PAGE ===================
+#songs {
+  background-color: #f8f8f8;
 }
+
+.song-heading {
+  margin-bottom: 40px;
+}
+
+
 
 .page-heading {
+  margin-top: 125px;
   font-family: 'Oswald', sans-serif;
   text-align: left;
+  color: #312F2F;
 }
 
+.song-artist {
+  color: #FCBE46;
+}
 
+// ================ LISTEN PAGE ===================
+
+#listen {
+  margin-top: 105px;
+  background-color: #f8f8f8;
+
+  .listen-heading {
+    font-family: 'Oswald', sans-serif;
+    color: #312F2F;
+  }
+
+    .music-widget {
+      margin-top: 30px;
+      margin-bottom: 50px;
+      text-align: center;
+  }
+}

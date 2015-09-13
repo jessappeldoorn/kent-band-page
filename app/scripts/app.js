@@ -33,170 +33,17 @@ var app = angular.module("bandPage", ["firebase", "ui.router", "bootstrapLightbo
      templateUrl: '/templates/login.html'
    });
 
+    $stateProvider.state('listen', {
+     url: '/listen',
+     controller: 'Main.controller',
+     templateUrl: '/templates/listen.html'
+   });
+
  }]);
 
 // home controller
-app.controller('Main.controller', ['$scope', '$firebaseArray','$timeout', 'Lightbox', function($scope, $firebaseArray, $interval, $timeout, Lightbox){
+app.controller('Main.controller', ['$scope', '$firebaseArray', function($scope, $firebaseArray, $interval){
   var ref = new Firebase("kents-page.firebaseIO.com");
-
-// create a synchronized (psuedo read-only) array
-  // $scope.songs = $firebaseArray(ref);
-  var fireTime = Firebase.ServerValue.TIMESTAMP;
-  // songCollections = [];
-
-//  $scope.oldiesSongs = [
-//  {artist: "ELVIS PRESLEY", songs: ["Suspicious Minds", "Can't Help Falling in Love", "Good Luck Charm", "Stuck On You", "The Wonder of You", "Hound Dog", "All Shook Up", "Don't Be Cruel", "Teddy Bear", "Jail House Rock"], type: "oldies"},
-//  {artist: "RICKY NELSON", songs: ["Hello Mary Lou"], type: "oldies"},
-//  {artist: "BILL HALEY & HIS COMETS", songs: ["Rock Around the Clock", "See You Later, Alligator", "Shake, Rattle & Roll"], type: "oldies"},
-//  {artist: "THE FLAMINGOS", songs: ["I Only Have Eyes for You"], type: "oldies"},
-//  {artist: "THE CHAMPS", songs: ["Tequila"], type: "oldies"},
-//  {artist: "DEL SHANNON", songs: ["Runaway"], type: "oldies"},
-//  {artist: "The Searchers", songs: ["Love Potion #9"], type: "oldies"},
-//  {artist: "Sam Cooke", songs: ["Twistin The Night Away"], type: "oldies"},
-//  {artist: "Eddie Cochran", songs: ["Summertime Blues"], type: "oldies"},
-//  {artist: "Everly Bros.", songs: ["Bye Bye Love", "Wake Up Little Susie"], type: "oldies"},
-//  {artist: "Neil Sedaka", songs: ["Breaking Up Is Hard To Do"], type: "oldies"},
-//  {artist: "Dion", songs: ["The Wanderer"], type: "oldies"},
-//  {artist: "Dion/Bobby Darin/Jerry Lee Lewis Medley", songs: ["Run Around Sue", "Splish Splash", "Great Balls of Fire"], type: "oldies"},
-//  {artist: "Joey Dee & The Starlighters", songs: ["Peppermint Twist"], type: "oldies"},
-//  {artist: "The Tokens", songs: ["Lion Sleeps Tonight"], type: "oldies"},
-//  {artist: "Surf Instrumental Medley", songs: ["Wipe-Out", "Pipeline", "Walk Don't Run"], type: "oldies"},
-//  {artist: "Mama's & Papa's", songs: ["California Dreamin"], type: "oldies"},
-//  {artist: "4 Seasons Medley #1", songs: ["Sherry", "Big Girls Don't Cry", "Walk Like A Man", "Bye Bye Baby"], type: "oldies"},
-//  {artist: "4 Seasons Medley #2", songs: ["Rag Doll", "Dawn", "Let's Hang On"], type: "oldies"},
-//  {artist: "Franki Valli", songs: ["Can't Take My Eyes Off Of You"], type: "oldies"},
-//  ];
-
-// $scope.classicSongs = [
-//  {artist: "Doobie Brothers", songs: ["Black Water", "Jesus Is Just Alright", "Long Train Runnin", "Listen To The Music", "China Groove", "Rockin' Down The Highway"], type: "classic"},
-//  {artist: "Lynyrd Skynyrd", songs: ["Sweet Home Alabama", "Gimme Three Steps"], type: "classic"},
-//  {artist: "Bachman, Turner OverDrive", songs: ["Takin' Care of Business"], type: "classic"},
-//  {artist: "Steely Dan", songs: ["Reelin In The Years"], type: "classic"},
-//  {artist: "Hollies", songs: ["Long Cool Woman"], type: "classic"},
-//  {artist: "The Eagles", songs: ["Take It Easy", "Lyin' Eyes", "Peaceful Easy Feeling", "Tequila Sunrise"], type: "classic"},
-//  {artist: "Three Dog Night", songs: ["One"], type: "classic"},
-//  {artist: "Jim Croce", songs: ["Bad, Bad Leroy Brown"], type: "classic"},
-//  {artist: "Billy Joel", songs: ["It's Still Rock & Roll", "You May Be Right"], type: "classic"},
-//  {artist: "Wild Cherry", songs: ["Play That Funky Music"], type: "classic"},
-//  {artist: "Average White Band", songs: ["Pick Up The Pieces"], type: "classic"},
-//  {artist: "K.C. & the Sunshine Band", songs: ["Get Down Tonight", "That's The WAy I Like It", "Shake, Shake, Shake"], type: "classic"},
-//  {artist: "Santana", songs: ["Evil Ways"], type: "classic"},
-//  {artist: "The Commodores", songs: ["Brickhouse"], type: "classic"},
-//  {artist: "Bee Gees", songs: ["Stayin Alive", "More Than A Woman", "Night Fever"], type: "classic"},
-//  {artist: "Kool & the Gant", songs: ["Celebration"], type: "classic"},
-//  {artist: "Cheap Trick", songs: ["I Want You To Want Me"], type: "classic"},
-//  {artist: "Bob Seger", songs: ["Old Time Rock & Roll", "Turn The Page"], type: "classic"},
-//  {artist: "Eric Clapton", songs: ["Wonderful Tonight", "I Shot The Sheriff"], type: "classic"},
-//  {artist: "Led Zeppelin", songs: ["Stairway To Heaven"], type: "classic"},
-//  ];
-
-//  $scope.currentSongs = [
-//  {artist: "Loverboy", songs: ["Working For The Weekend"], type: "current"},
-//  {artist: "Michael Jackson", songs: ["Billie Jean"], type: "current"},
-//  {artist: "John Cougar Mellencamp", songs: ["Hurt's So Good"]},
-//  {artist: "Journey", songs: ["Don't Stop Believin'", "Open Arms", "Seperate Ways"], type: "current"},
-//  {artist: "Bon Jovi", songs: ["Livin' On A Prayer"], type: "current"},
-//  {artist: "Bruce Springsteen", songs: ["Dancin' In The Dark"], type: "current"},
-//  {artist: "Black Crowes", songs: ["Hard To Handle"], type: "current"},
-//  {artist: "Bryan Adams", songs: ["Summer of '69"], type: "current"},
-//  {artist: "Georgia Satelites", songs: ["Keep Your Hands To Yourself"], type: "current"},
-//  {artist: "Joan Jett", songs: ["I Love Rock & Roll"], type: "current"},
-//  {artist: "Def Leppard", songs: ["Pour Some Sugar On Me"], type: "current"},
-//  {artist: "Pink Floyd", songs: ["Another Brick In The Wall"], type: "current"},
-//  {artist: "Robert Palmer", songs: ["Addicted To Love"], type: "current"},
-//  {artist: "Stevie Ray Vaughn", songs: ["Pride & Joy", "House Is Rockin'"]},
-//  {artist: "Gary Moore", songs: ["Still Got The Blues"], type: "current"},
-//  {artist: "Jonny Lang", songs: ["Rackem' Up"], type: "current"},
-//  {artist: "Robert Plant & the Honeydrippers", songs: ["Rockin' At Midnight"], type: "current"},
-//  {artist: "Beach Boys", songs: ["Kokomo"], type: "current"},
-//  {artist: "Los Lonely Boys", songs: ["How Far Is Heaven"], type: "current"},
-//  {artist: "Jason Mraz", songs: ["I'm Yours"], type: "current"},
-//  ];
-
- // [
- // {artist: "ELVIS PRESLEY", songs: ["Suspicious Minds", "Can't Help Falling in Love", "Good Luck Charm", "Stuck On You", "The Wonder of You", "Hound Dog", "All Shook Up", "Don't Be Cruel", "Teddy Bear", "Jail House Rock"], type: "oldies"},
- // {artist: "RICKY NELSON", songs: ["Hello Mary Lou"], type: "oldies"},
- // {artist: "BILL HALEY & HIS COMETS", songs: ["Rock Around the Clock", "See You Later, Alligator", "Shake, Rattle & Roll"], type: "oldies"},
- // {artist: "THE FLAMINGOS", songs: ["I Only Have Eyes for You"], type: "oldies"},
- // {artist: "THE CHAMPS", songs: ["Tequila"], type: "oldies"},
- // {artist: "DEL SHANNON", songs: ["Runaway"], type: "oldies"},
- // {artist: "The Searchers", songs: ["Love Potion #9"], type: "oldies"},
- // {artist: "Sam Cooke", songs: ["Twistin The Night Away"], type: "oldies"},
- // {artist: "Eddie Cochran", songs: ["Summertime Blues"], type: "oldies"},
- // {artist: "Everly Bros.", songs: ["Bye Bye Love", "Wake Up Little Susie"], type: "oldies"},
- // {artist: "Neil Sedaka", songs: ["Breaking Up Is Hard To Do"], type: "oldies"},
- // {artist: "Dion", songs: ["The Wanderer"], type: "oldies"},
- // {artist: "Dion/Bobby Darin/Jerry Lee Lewis Medley", songs: ["Run Around Sue", "Splish Splash", "Great Balls of Fire"], type: "oldies"},
- // {artist: "Joey Dee & The Starlighters", songs: ["Peppermint Twist"], type: "oldies"},
- // {artist: "The Tokens", songs: ["Lion Sleeps Tonight"], type: "oldies"},
- // {artist: "Surf Instrumental Medley", songs: ["Wipe-Out", "Pipeline", "Walk Don't Run"], type: "oldies"},
- // {artist: "Mama's & Papa's", songs: ["California Dreamin"], type: "oldies"},
- // {artist: "4 Seasons Medley #1", songs: ["Sherry", "Big Girls Don't Cry", "Walk Like A Man", "Bye Bye Baby"], type: "oldies"},
- // {artist: "4 Seasons Medley #2", songs: ["Rag Doll", "Dawn", "Let's Hang On"], type: "oldies"},
- // {artist: "Franki Valli", songs: ["Can't Take My Eyes Off Of You"], type: "oldies"},
- // {artist: "Doobie Brothers", songs: ["Black Water", "Jesus Is Just Alright", "Long Train Runnin", "Listen To The Music", "China Groove", "Rockin' Down The Highway"], type: "classic"},
- // {artist: "Lynyrd Skynyrd", songs: ["Sweet Home Alabama", "Gimme Three Steps"], type: "classic"},
- // {artist: "Bachman, Turner OverDrive", songs: ["Takin' Care of Business"], type: "classic"},
- // {artist: "Steely Dan", songs: ["Reelin In The Years"], type: "classic"},
- // {artist: "Hollies", songs: ["Long Cool Woman"], type: "classic"},
- // {artist: "The Eagles", songs: ["Take It Easy", "Lyin' Eyes", "Peaceful Easy Feeling", "Tequila Sunrise"], type: "classic"},
- // {artist: "Three Dog Night", songs: ["One"], type: "classic"},
- // {artist: "Jim Croce", songs: ["Bad, Bad Leroy Brown"], type: "classic"},
- // {artist: "Billy Joel", songs: ["It's Still Rock & Roll", "You May Be Right"], type: "classic"},
- // {artist: "Wild Cherry", songs: ["Play That Funky Music"], type: "classic"},
- // {artist: "Average White Band", songs: ["Pick Up The Pieces"], type: "classic"},
- // {artist: "K.C. & the Sunshine Band", songs: ["Get Down Tonight", "That's The WAy I Like It", "Shake, Shake, Shake"], type: "classic"},
- // {artist: "Santana", songs: ["Evil Ways"], type: "classic"},
- // {artist: "The Commodores", songs: ["Brickhouse"], type: "classic"},
- // {artist: "Bee Gees", songs: ["Stayin Alive", "More Than A Woman", "Night Fever"], type: "classic"},
- // {artist: "Kool & the Gant", songs: ["Celebration"], type: "classic"},
- // {artist: "Cheap Trick", songs: ["I Want You To Want Me"], type: "classic"},
- // {artist: "Bob Seger", songs: ["Old Time Rock & Roll", "Turn The Page"], type: "classic"},
- // {artist: "Eric Clapton", songs: ["Wonderful Tonight", "I Shot The Sheriff"], type: "classic"},
- // {artist: "Led Zeppelin", songs: ["Stairway To Heaven"], type: "classic"},
- // {artist: "Loverboy", songs: ["Working For The Weekend"], type: "current"},
- // {artist: "Michael Jackson", songs: ["Billie Jean"], type: "current"},
- // {artist: "John Cougar Mellencamp", songs: ["Hurt's So Good"]},
- // {artist: "Journey", songs: ["Don't Stop Believin'", "Open Arms", "Seperate Ways"], type: "current"},
- // {artist: "Bon Jovi", songs: ["Livin' On A Prayer"], type: "current"},
- // {artist: "Bruce Springsteen", songs: ["Dancin' In The Dark"], type: "current"},
- // {artist: "Black Crowes", songs: ["Hard To Handle"], type: "current"},
- // {artist: "Bryan Adams", songs: ["Summer of '69"], type: "current"},
- // {artist: "Georgia Satelites", songs: ["Keep Your Hands To Yourself"], type: "current"},
- // {artist: "Joan Jett", songs: ["I Love Rock & Roll"], type: "current"},
- // {artist: "Def Leppard", songs: ["Pour Some Sugar On Me"], type: "current"},
- // {artist: "Pink Floyd", songs: ["Another Brick In The Wall"], type: "current"},
- // {artist: "Robert Palmer", songs: ["Addicted To Love"], type: "current"},
- // {artist: "Stevie Ray Vaughn", songs: ["Pride & Joy", "House Is Rockin'"]},
- // {artist: "Gary Moore", songs: ["Still Got The Blues"], type: "current"},
- // {artist: "Jonny Lang", songs: ["Rackem' Up"], type: "current"},
- // {artist: "Robert Plant & the Honeydrippers", songs: ["Rockin' At Midnight"], type: "current"},
- // {artist: "Beach Boys", songs: ["Kokomo"], type: "current"},
- // {artist: "Los Lonely Boys", songs: ["How Far Is Heaven"], type: "current"},
- // {artist: "Jason Mraz", songs: ["I'm Yours"], type: "current"},
- // ];
-
- // songCollections.push($scope.oldiesSongs);
-
- // $scope.songs.$add(songCollections);
-
-
-
-// songCollections.push(sixtiesSongs);
-
-
-
-// $scope.formattedShows = function(show) {
-//   return show.date + ":" + show.venue;
-// }
-  // $scope.songs.$add(songCollections);
-  
-  // $interval( function(){ $scope.expiredShow(); }, 86400000);
-
- 
-//     document.getElementById("navigation").onscroll = function() {
-
-// }
 
 }]);
 
@@ -205,132 +52,130 @@ app.controller('Photo.controller', ['$scope', '$firebaseArray', 'Lightbox', func
 
   $scope.images = [
       {
-        'small': "/images/kent_1.jpg",
+        'small': "/images/kent_1_thumb.jpg",
         'url': "/images/kent_1.jpg",
         'desc': "photo",
-        'caption': "Hitz"
+        'caption': ""
       },
       {
-        'small': "/images/kent_2.jpg",
+        'small': "/images/kent_2_thumb.jpg",
         'url': "/images/kent_2.jpg",
         'desc': "photo",
-        'caption': "Hitz"
+        'caption': ""
       },
       {
-        'small': "images/kent_3.jpg",
+        'small': "images/kent_3_thumb.jpg",
         'url': "images/kent_3.jpg",
         'desc': "photo",
-        'caption': "Kent"
+        'caption': ""
       },
       {
-        'small': "images/kent_elvis.jpg",
+        'small': "images/kent_elvis_thumb.jpg",
         'url': "images/kent_elvis.jpg",
         'desc': "photo",
         'caption': "Elvis Presley"
       },
       {
-        'small': "/images/gangbusters.jpg",
+        'small': "/images/gangbusters_thumb.jpg",
         'url': "/images/gangbusters.jpg",
         'desc': "photo",
         'caption': "Gangbusters"
       },
       {
-        'small': "/images/kent_rick.jpg",
+        'small': "/images/kent_rick_thumb.jpg",
         'url': "/images/kent_rick.jpg",
         'desc': "photo",
         'caption': ""
       },
       {
-        'small': "images/hitz_girls.jpg",
+        'small': "images/hitz_girls_thumb.jpg",
         'url': "images/hitz_girls.jpg",
         'desc': "photo",
         'caption': "Hitz Girls of the 60's"
       },
       {
-        'small': "images/hitz_1.jpg",
+        'small': "images/hitz_1_thumb.jpg",
         'url': "images/hitz_1.jpg",
         'desc': "photo",
         'caption': "Hitz Stars"
       },
       {
-        'small': "images/hitz_costume.jpg",
+        'small': "images/hitz_costume_thumb.jpg",
         'url': "images/hitz_costume.jpg",
         'desc': "photo",
-        'caption': "Gangbusters"
+        'caption': "Hitz - Paul Revere and the Raiders"
       },
       {
-        'small': "images/kent_elvis.jpg",
-        'url': "images/kent_elvis.jpg",
-        'desc': "photo",
-        'caption': "Gangbusters"
-      },
-
-      {
-        'small': "/images/kent_1.jpg",
-        'url': "/images/kent_1.jpg",
-        'desc': "photo",
-        'caption': "Gangbusters"
-      },
-      {
-        'small': "/images/kent_2.jpg",
-        'url': "/images/kent_2.jpg",
-        'desc': "photo",
-        'caption': "Gangbusters"
-      },
-      {
-        'small': "images/elvis.jpg",
+        'small': "images/elvis_thumb.jpg",
         'url': "images/elvis.jpg",
         'desc': "photo",
-        'caption': "Gangbusters"
+        'caption': "Elvis Presley"
       },
       {
-        'small': "images/kent_elvis.jpg",
-        'url': "images/kent_elvis.jpg",
+        'small': "/images/hitz_costume2_thumb.jpg",
+        'url': "/images/hitz_costume2.jpg",
         'desc': "photo",
-        'caption': "Gangbusters"
+        'caption': "Hitz presents the Monkeys"
       },
       {
-        'small': "/images/kent_applebees.jpg",
+        'small': "/images/hitz_costume4_thumb.jpg",
+        'url': "/images/hitz_costume4.jpg",
+        'desc': "photo",
+        'caption': "Hitz presents the Beatles"
+      },
+      {
+        'small': "images/hitz_costume5_thumb.jpg",
+        'url': "images/hitz_costume5.jpg",
+        'desc': "photo",
+        'caption': "Hitz present the Beach Boys"
+      },
+      {
+        'small': "/images/kent_wedding_thumb.jpg",
+        'url': "/images/kent_wedding_yellow.jpg",
+        'desc': "photo",
+        'caption': ""
+      },
+      {
+        'small': "/images/kent_applebees_thumb.jpg",
         'url': "/images/kent_applebees.jpg",
         'desc': "photo",
-        'caption': "Gangbusters"
+        'caption': ""
       },
       {
-        'small': "/images/kent_bar.jpg",
+        'small': "/images/kent_bar_thumb.jpg",
         'url': "/images/kent_bar.jpg",
         'desc': "photo",
-        'caption': "Gangbusters"
+        'caption': "Applebees"
       },
       {
-        'small': "images/kent_bride.jpg",
+        'small': "images/kent_bride_thumb.jpg",
         'url': "images/kent_bride.jpg",
         'desc': "photo",
-        'caption': "Gangbusters"
+        'caption': "Applebees"
       },
       {
-        'small': "images/kent_fan.jpg",
+        'small': "images/kent_fan_thumb.jpg",
         'url': "images/kent_fan.jpg",
         'desc': "photo",
-        'caption': "Gangbusters"
+        'caption': ""
       },
       {
-        'small': "images/kent_outdoors.jpg",
+        'small': "images/kent_outdoors_thumb.jpg",
         'url': "images/kent_outdoors.jpg",
         'desc': "photo",
-        'caption': "Gangbusters"
+        'caption': ""
       },
       {
-        'small': "images/kent_outdoors2.jpg",
+        'small': "images/kent_outdoors2_thumb.jpg",
         'url': "images/kent_outdoors2.jpg",
         'desc': "photo",
-        'caption': "Gangbusters"
+        'caption': ""
       },
     ];
 
   $scope.openLightboxModal = function (index) {
     Lightbox.openModal($scope.images, index);
   };
-
 }]);
 
 // login controller
@@ -342,19 +187,17 @@ app.controller('Login.controller', ['$scope', '$firebaseArray', '$interval', '$t
   $scope.songs = $firebaseArray(ref2);
 
   $scope.formattedSongs = function(song) {
-  return song.artist.toUpperCase() + ": " + song.songs.join(", ");
+  return song.songs.join(", ");
 };
-
-  // var songsArray = [{}]
 
   $scope.addSong = function() { // add song to list
     var newSong = {
       type: $scope.newTypeText,
       artist: $scope.newArtistText,
-      songs: $scope.newSongText
+      songs: [$scope.newSongText]
     };
 
-    $scope.songs.$add(newSong); // Push into array
+    $scope.songs.$add(newSong); // Push into Firebase array
     $scope.newSongText = "";
     $scope.newArtistText = "";
     $scope.newTypeText = "";
@@ -371,15 +214,14 @@ app.controller('Login.controller', ['$scope', '$firebaseArray', '$interval', '$t
   $scope.addShow = function() { // add show to list
     var newShow = {
       date: $scope.newShowDate,
-      time: $scope.newShowTime,
+      city: $scope.newShowCity,
       venue: $scope.newShowVenue,
       expired: false,
-      created: fireTime,
     };
 
-    $scope.shows.$add(newShow); // Push into array
+    $scope.shows.$add(newShow); // Push into Firebase array
     $scope.newShowDate = "";
-    $scope.newShowTime = "";
+    $scope.newShowCity = "";
     $scope.newShowVenue = "";
   };
  
@@ -388,19 +230,13 @@ app.controller('Login.controller', ['$scope', '$firebaseArray', '$interval', '$t
   };
 
   $scope.expiredShow = function() {
-    console.log("Called expiredShow!");
     $scope.shows.forEach(function(show){
-      var createdAt = show.created,
-      currentTime = new Date().getTime(),
-      expiredTime = 604800000;
+      var showDate = show.date,
+      currentTime = new Date().getTime();
 
-      if( currentTime - createdAt > expiredTime ){
-        console.log("Expire this show " + show);
+      if( currentTime - createdAt){
         show.expired = true;
         $scope.shows.$save(show);
-      }
-      else {
-      console.log("Did not expire " + show);  
       }
     });
   }
