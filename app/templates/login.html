@@ -19,29 +19,44 @@
           <button type="submit" class="btn btn-default">Add Show</button>
         </form>
         </br>
-        <h4 class="list-group-item">SHOWS CURRENTLY LISTED</h4>
+        <h4 class="list-group-item">SHOWS CURRENTLY UPCOMING</h4>
         <ul class="list-group">
-          <li class="list-group-item" ng-repeat="show in shows | orderBy: 'date'">{{ show.date}}:<span class="venue"> {{ show.venue}} </span><span class="showtime"> {{ show.city}} </span><span class="glyphicon glyphicon-remove" ng-click="deleteShow(show)"></span><span class="glyphicon glyphicon-time" ng-click="deleteShow(show)"></span></li>
+          <li class="list-group-item" ng-repeat="show in shows | orderBy: 'date'" ng-hide="show.expired">{{ show.date}}:<span class="venue"> {{ show.venue}} </span><span class="showtime"> {{ show.city}} </span><span class="glyphicon glyphicon-remove" ng-click="deleteShow(show)"></span><span class="glyphicon glyphicon-time" ng-click="expireShow(show)"></span></li>
         </ul>
         </br>
-        <h1>EDIT SONGS</h1>
+        <h1>ADD SONGS</h1>
         <form class="form-inline" ng-submit="addSong()">
           <div class="form-group">
-            <label for="exampleInputName2">Collection</label>
+            <label for="collectionName">Collection</label>
             <input type="text" ng-model="newTypeText" class="form-control" id="exampleInputName2" placeholder="oldies, classic, current">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail2">Artist</label>
+            <label for="artistName">Artist</label>
             <input type="text" ng-model="newArtistText" class="form-control" id="exampleInputEmail2" placeholder="Led Zeppelin">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail2">Song</label>
+            <label for="songName">Song</label>
             <input type="text" ng-model="newSongText" class="form-control" id="exampleInputEmail2" placeholder="Stairway To Heaven">
           </div>
           <button type="submit" class="btn btn-default">Add Song</button>
         </form>
         </br>
-        </li>
+        <h1>ADD REVIEWS</h1>
+        <form class="form-inline" ng-submit="addReview()">
+          <div class="form-group">
+            <label for="reviewVenueName">Venue</label>
+            <input type="text" ng-model="newVenueText" class="form-control" id="exampleInputName2" placeholder="The Lodge">
+          </div>
+          <div class="form-group">
+            <label for="reviewPersonName">Person, Title</label>
+            <input type="text" ng-model="newPersonText" class="form-control" id="exampleInputName2" placeholder="Karen, Booking">
+          </div>
+          <div class="form-group">
+            <label for="review">Review</label>
+            <input type="text" ng-model="newReviewText" class="form-control" id="exampleInputEmail2" placeholder="Add review text">
+          </div>
+          <button type="submit" class="btn btn-default">Add Review</button>
+        </form>
       </div><!-- end of col-lg-6 -->
     </div> <!-- end of row -->
   </div> <!-- end of container -->

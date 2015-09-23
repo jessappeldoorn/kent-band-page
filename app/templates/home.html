@@ -13,7 +13,6 @@
     </div> <!-- schedule -->
   </div> <!-- container -->
 </div> <!-- hero-content -->
-
 <div id="past-shows" class='container'>
   <div class="schedule">
     <div class="row">
@@ -27,14 +26,11 @@
     <div class="row">
       <div class="col-md-12">
         <h1>REVIEWS</h1>
-        <h3>Coventry of Mahtomedi - Sherry, Activities Director</h3>
-        <p>Kent, I want to thank you so much for your wonderful music you sang to our seniors. It was so great to see the seniors so happy, listening to you.  Thank you!  
+        <ul class="review-person" ng-repeat="review in reviews">
+          <li ><strong>{{ review.venue  }} - {{ review.person }}</strong></li> 
+          <li class="review-content"> {{ review.review }} </li> 
+        </ul>
       </div> <!-- col-md-4 -->
     </div> <!-- row -->
-  </div>
-</div> <!-- schedule -->
-
-
-
-
-
+  </div> <!-- schedule -->
+</div> <!-- container -->

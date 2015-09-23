@@ -1,8 +1,10 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+
 var app = angular.module("bandPage", ["firebase", "ui.router", "bootstrapLightbox"]);
 
  app.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
    $locationProvider.html5Mode(true);
+
  
    $stateProvider.state('home', {
      url: '/',
@@ -41,6 +43,8 @@ var app = angular.module("bandPage", ["firebase", "ui.router", "bootstrapLightbo
    });
 
  }]);
+
+
 
 // home controller
 app.controller('Main.controller', ['$scope', '$firebaseArray', function($scope, $firebaseArray, $interval){
@@ -183,6 +187,7 @@ app.controller('Photo.controller', ['$scope', '$firebaseArray', 'Lightbox', func
 app.controller('Login.controller', ['$scope', '$firebaseArray', '$interval', '$timeout', function($scope, $firebaseArray, $interval, $timeout){
   var ref = new Firebase("kents-page.firebaseIO.com/Shows");
   var ref2 = new Firebase("kents-page.firebaseIO.com/Songs");
+  var ref3 = new Firebase("kents-page.firebaseIO.com/Reviews");
 
 // create a synchronized (psuedo read-only) array
   $scope.songs = $firebaseArray(ref2);
@@ -203,7 +208,7 @@ app.controller('Login.controller', ['$scope', '$firebaseArray', '$interval', '$t
     $scope.newArtistText = "";
     $scope.newTypeText = "";
   };
- 
+
   $scope.deleteSong = function(song){
     $scope.songs.$remove(song);
   };
@@ -233,17 +238,37 @@ app.controller('Login.controller', ['$scope', '$firebaseArray', '$interval', '$t
   $scope.expiredShow = function() {
     $scope.shows.forEach(function(show){
       var showDate = show.date,
-      currentTime = new Date().getTime();
+      currentDate = new Date().getDate();
 
-      if( currentTime - createdAt){
+      if(currentTime - createdAt){
         show.expired = true;
         $scope.shows.$save(show);
       }
     });
   }
-
   $interval( function(){ $scope.expiredShow(); }, 86400000);
 
+  $scope.expireShow = function(show) {
+    show.expired = true;
+    $scope.shows.$save(show);
+  };
+
+// create a synchronized (psuedo read-only) array
+  $scope.reviews = $firebaseArray(ref3);
+
+  $scope.addReview = function() { 
+    var newReview = {
+      venue: $scope.newVenueText,
+      person: $scope.newPersonText,
+      review: $scope.newReviewText
+    };
+
+    $scope.reviews.$add(newReview); 
+    $scope.newVenueText = "";
+    $scope.newPersonText = "";
+    $scope.newReviewText = "";
+  };
+ 
 }]);
 
 app.directive("songList", function() {
